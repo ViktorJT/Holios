@@ -1,8 +1,8 @@
-require('dotenv').config({
-  path: `.env.${process.env.NODE_ENV}`,
-});
+import dotenv from 'dotenv';
 
-module.exports = {
+dotenv.config({ path: '.env' });
+
+export default {
   siteMetadata: {
     title: `Holios`,
     description: `Massage therapy in Leiden`,
