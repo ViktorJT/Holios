@@ -8,21 +8,10 @@ const StyledHeader = styled.header`
   flex-flow: column nowrap;
   height: 100vh;
   max-height: 1080px;
-
-  & > .gatsby-image-wrapper {
-    margin-bottom: 1rem;
-  }
-
-  & > * {
-    flex: 1 1 50%;
-  }
+  width: 100%;
 
   @media (min-width: 960px) {
     flex-flow: row nowrap;
-
-    & > .gatsby-image-wrapper {
-      margin-bottom: 0rem;
-    }
   }
 `;
 
@@ -34,6 +23,7 @@ const StyledWrapper = styled.div`
   place-items: stretch;
   padding: 1rem;
   gap: 1rem;
+  flex: 1 1 60%;
 
   & > * {
     max-width: var(--textWidth);
@@ -61,6 +51,17 @@ const StyledWrapper = styled.div`
   @media (min-width: 960px) {
     place-content: center;
     place-items: center;
+    flex: 1 1 50%;
+  }
+`;
+
+const StyledImg = styled(Img)`
+  margin-bottom: 1rem;
+  flex: 1 1 40%;
+
+  @media (min-width: 960px) {
+    margin-bottom: 0rem;
+    flex: 1 1 50%;
   }
 `;
 
@@ -72,14 +73,11 @@ export default function CategoryHero({
       <StyledWrapper>
         <div>
           <h1>{title}</h1>
-          <p>
-            €{cost} {duration}
-          </p>
         </div>
         <h2>{subtitle}</h2>
-        <PrimaryButton label='Maak een aafspraak'/>
+        <PrimaryButton label="Maak een aafspraak" />
       </StyledWrapper>
-      <Img fluid={image.asset.fluid} alt={image.alt} />
+      <StyledImg fluid={image.asset.fluid} alt={image.alt} />
     </StyledHeader>
   );
 }

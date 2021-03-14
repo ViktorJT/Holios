@@ -36,7 +36,7 @@ const StyledWrapper = styled.div`
   }
 
   @media (min-width: 960px) {
-    padding: 8rem var(--contentPadding) 2rem var(--contentPadding);
+    padding: 8rem var(--contentPadding) 0 var(--contentPadding);
   }
 `;
 
@@ -57,13 +57,7 @@ const StyledPortableText = styled(PortableText)`
   }
 `;
 
-const StyledList = styled.ul`
-  & > * {
-    font-size: 1rem;
-  }
-`;
-
-export default function PortableTextBlock({ content, benefits }) {
+export default function PortableTextBlock({ content }) {
   return (
     <StyledWrapper>
       <StyledPortableText
@@ -71,11 +65,6 @@ export default function PortableTextBlock({ content, benefits }) {
         blocks={content}
         serializers={serializer}
       />
-      <StyledList>
-        {benefits.map((benefit) => (
-          <li>{benefit}</li>
-        ))}
-      </StyledList>
     </StyledWrapper>
   );
 }

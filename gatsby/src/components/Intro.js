@@ -21,6 +21,11 @@ const StyledSection = styled.section`
 
   padding: clamp(4rem, 11vh, 160px) 2rem;
 
+  h2 {
+    font-size: clamp(1rem, 4vw, 2rem);
+    letter-spacing: 0;
+  }
+
   p {
     font-size: clamp(1rem, 1.7vw, 1.5rem);
   }
@@ -31,8 +36,7 @@ export default function Intro({ introHeading, introText }) {
     <StyledSection>
       <h2>{introHeading}</h2>
       <p>{introText}</p>
-
-      <PrimaryButton link="#" label="test" />
+      {/* <PrimaryButton link="#" label="test" /> */}
     </StyledSection>
   );
 }

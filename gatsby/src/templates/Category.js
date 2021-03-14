@@ -26,6 +26,7 @@ const StyledWrapper = styled.div`
 
   display: inherit;
   flex-flow: inherit;
+  align-items: center;
   width: 100%;
 
   max-width: var(--sectionWidth);
@@ -40,10 +41,7 @@ export default function SingleCategoryPage({
         <SEO title={category.title} image={category.image?.asset?.fluid?.src} />
         <StyledWrapper>
           <CategoryHero data={category} />
-          <PortableTextBlock
-            content={category._rawDescription}
-            benefits={category.benefits}
-          />
+          <PortableTextBlock content={category._rawDescription} />
           <TreatmentList treatments={category.treatments} />
         </StyledWrapper>
       </StyledContent>

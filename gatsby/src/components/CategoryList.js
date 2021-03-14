@@ -4,8 +4,8 @@ import styled from 'styled-components';
 import PrimaryButton from './PrimaryButton';
 
 const StyledMain = styled.main`
-  display: inherit;
-  flex-flow: inherit;
+  display: flex;
+  flex-flow: column nowrap;
   gap: 2rem;
   padding-bottom: clamp(5rem, 11vh, 10rem);
 
@@ -23,18 +23,8 @@ const StyledSection = styled.section`
   background-size: cover;
   background-position: center;
 
-  & > * {
-    flex: 1 1 463px;
-    max-height: 40vh;
-  }
-
   @media (min-width: 960px) {
     height: 80vh;
-
-    & > * {
-      flex: 1 1 463px;
-      max-height: 1080px;
-    }
   }
 `;
 
@@ -42,6 +32,7 @@ const StyledContent = styled.div`
   background-color: var(--white);
   display: inherit;
   flex-flow: column nowrap;
+  flex: 1 1 463px;
   place-items: center;
   place-content: center;
   padding: var(--contentPadding);
@@ -67,6 +58,16 @@ const StyledContent = styled.div`
   }
 `;
 
+const StyledImg = styled(Img)`
+  height: 320px;
+  width: 100%;
+
+  @media (min-width: 960px) {
+    flex: 1 1 463px;
+    height: 100%;
+  }
+`;
+
 function SingleCategory({ category, index }) {
   const even = !(index % 2);
 
@@ -75,17 +76,17 @@ function SingleCategory({ category, index }) {
       <StyledContent index={index}>
         <h2>{category.title}</h2>
         <p>{category.subtitle}</p>
-        <PrimaryButton link="#" label={`See all ${category.title}`} />
+        <PrimaryButton link={category.slug.current} label="Lees meer" />
       </StyledContent>
-      <Img fluid={category.image.asset.fluid} alt={category.image.alt} />
+      <StyledImg fluid={category.image.asset.fluid} alt={category.image.alt} />
     </StyledSection>
   ) : (
     <StyledSection>
-      <Img fluid={category.image.asset.fluid} alt={category.image.alt} />
+      <StyledImg fluid={category.image.asset.fluid} alt={category.image.alt} />
       <StyledContent index={index}>
         <h2>{category.title}</h2>
         <p>{category.subtitle}</p>
-        <PrimaryButton link="#" label={`See all ${category.title}`} />
+        <PrimaryButton link={category.slug.current} label="Lees meer" />
       </StyledContent>
     </StyledSection>
   );

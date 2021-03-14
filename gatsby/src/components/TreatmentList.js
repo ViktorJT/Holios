@@ -1,6 +1,7 @@
 import React from 'react';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
+import PrimaryButton from './PrimaryButton';
 
 const StyledMain = styled.div`
   display: flex;
@@ -11,25 +12,15 @@ const StyledMain = styled.div`
 `;
 
 const StyledSection = styled.article`
+  margin-top: 4rem;
   display: flex;
   flex-flow: column nowrap;
+  flex: 1 1 240px;
 
   background-color: var(--primaryLight);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-
-  & > * {
-    flex: 1 1 240px;
-    max-height: 40vh;
-  }
-
-  @media (min-width: 960px) {
-    & > * {
-      max-height: 1080px;
-      flex: 0 1 240px;
-    }
-  }
 `;
 
 const StyledContent = styled.div`
@@ -39,6 +30,8 @@ const StyledContent = styled.div`
   place-items: center;
   place-content: center;
   padding: var(--contentPadding);
+  /* max-height: 40vh; */
+  height: 320px;
 
   & > * {
     width: 100%;
@@ -56,19 +49,35 @@ const StyledContent = styled.div`
 
   @media (min-width: 960px) {
     gap: 1rem;
+    /* max-height: 1080px; */
+    /* flex: 0 1 240px; */
+  }
+`;
+
+const StyledImg = styled(Img)`
+  flex: 1 1 240px;
+  /* max-height: 40vh; */
+
+  @media (min-width: 960px) {
+    /* max-height: 1080px; */
+    flex: 0 1 240px;
   }
 `;
 
 function SingleTreatment({ treatment, index }) {
   return (
     <StyledSection>
-      <Img fluid={treatment.image.asset.fluid} alt={treatment.image.alt} />
+      <StyledImg
+        fluid={treatment.image.asset.fluid}
+        alt={treatment.image.alt}
+      />
       <StyledContent index={index}>
         <h2>{treatment.title}</h2>
         <p>{treatment.subtitle}</p>
+        <PrimaryButton link={treatment.slug.current} label="Lees meer" />
       </StyledContent>
     </StyledSection>
-  )
+  );
 }
 
 export default function TreatmentList({ treatments }) {

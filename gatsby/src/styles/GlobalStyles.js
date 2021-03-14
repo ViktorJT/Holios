@@ -1,5 +1,3 @@
-// TODO Fix button component (use the variable technique they used for casting?)
-
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
@@ -13,6 +11,7 @@ const GlobalStyles = createGlobalStyle`
     --black: hsla(195,8%,16%,1);
 
     --whiteTransparent: hsla(104,100%,100%,var(--semiTransparent));
+    --blackTransparent: hsla(195,8%,16%,0.2);
 
     --sectionWidth: 1920px;
     ${'' /* --textWidth: 640px; */}
