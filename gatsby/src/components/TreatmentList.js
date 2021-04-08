@@ -12,7 +12,7 @@ const StyledMain = styled.div`
 `;
 
 const StyledSection = styled.article`
-  margin-top: 4rem;
+  margin-top: 2rem;
   display: flex;
   flex-flow: column nowrap;
   flex: 1 1 240px;
@@ -27,30 +27,23 @@ const StyledContent = styled.div`
   background-color: var(--white);
   display: inherit;
   flex-flow: column nowrap;
-  place-items: center;
-  place-content: center;
-  padding: var(--contentPadding);
-  /* max-height: 40vh; */
-  height: 320px;
+  justify-content: space-between;
+  padding: 1rem;
+  height: 240px;
 
   & > * {
     width: 100%;
-    max-width: var(--textWidth);
+    max-width: 100%;
   }
 
   & > h2 {
-    font-size: clamp(1rem, 1.7vw, 1.5rem);
+    font-size: 1rem;
     letter-spacing: 0;
   }
 
   & > p {
     font-size: 1rem;
-  }
-
-  @media (min-width: 960px) {
-    gap: 1rem;
-    /* max-height: 1080px; */
-    /* flex: 0 1 240px; */
+    margin: 0;
   }
 `;
 

@@ -155,6 +155,7 @@ export default function Nav() {
           <Link to="/massage">massage</Link>
           <Link to="/coaching">coaching</Link>
           <Link to="/cursussen">cursussen</Link>
+          <Link to="/about">over mij</Link>
           <Link to="/contact">prijzen & contact</Link>
         </StyledLinks>
       </StyledWrapper>

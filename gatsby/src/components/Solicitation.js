@@ -23,7 +23,7 @@ const StyledSection = styled.section`
   }
 
   @media (min-width: 960px) {
-    min-height: 667px;
+    min-height: 480px;
   }
 `;
 
@@ -31,8 +31,7 @@ export default function Solicitation({ solicitation }) {
   return (
     <StyledSection>
       <p>{solicitation}</p>
-      <PrimaryButton link="#" label="Maak een afspraak" />
-      <PrimaryButton link="#" label="Prijzen & vergoedingen" />
+      <PrimaryButton link="/contact/" label="Maak een afspraak" />
     </StyledSection>
   );
 }

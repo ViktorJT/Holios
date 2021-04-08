@@ -1,8 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import styled from 'styled-components';
-import PriceTable from '../components/PriceTable';
-import ContactTable from '../components/ContactTable';
+import PortableTextBlock from '../components/PortableTextBlock';
 
 const StyledContent = styled.div`
   display: flex;
@@ -19,59 +18,28 @@ const StyledWrapper = styled.div`
   border-left: 1px solid var(--whiteTransparent);
   border-right: 1px solid var(--whiteTransparent);
 
-  gap: 1rem;
-
   display: inherit;
   flex-flow: inherit;
-  place-items: center;
   width: 100%;
 
   max-width: var(--sectionWidth);
 `;
 
 export default function contact({ data }) {
+  console.log(data);
   return (
     <StyledContent>
       <StyledWrapper>
-        <ContactTable siteSettings={data.siteSettings} />
-        <PriceTable categories={data.categories} />
+        <PortableTextBlock content={data.siteSettings._rawAbout} />
       </StyledWrapper>
     </StyledContent>
   );
 }
 
 export const query = graphql`
-  query ContactPageQuery {
-    categories: allSanityCategory {
-      nodes {
-        title
-        id
-        slug {
-          current
-        }
-        treatments {
-          cost
-          duration
-          title
-          subtitle
-          slug {
-            current
-          }
-        }
-      }
-    }
+  query AboutPageQuery {
     siteSettings: sanitySiteSettings {
-      email
-      telephone
-      street
-      streetNumber
-      postCode
-      city
-      location {
-        lat
-        lng
-        alt
-      }
+      _rawAbout
     }
   }
 `;

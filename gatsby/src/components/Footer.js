@@ -3,6 +3,7 @@ import { Link, StaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
 
 const StyledFooter = styled.footer`
+  /* margin-top: 2rem; */
   background-color: var(--white);
 
   & > .wrapper {
@@ -20,7 +21,7 @@ const StyledFooter = styled.footer`
 `;
 
 const StyledItem = styled.div`
-  --min: 30ch;
+  --min: 25ch;
   display: inherit;
   flex-flow: column nowrap;
 
@@ -29,7 +30,7 @@ const StyledItem = styled.div`
   p,
   a {
     margin: 0 0 1rem 0;
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
 
   & > *:first-child {
@@ -52,7 +53,7 @@ export default function Footer() {
             postCode
             city
           }
-          categories: allSanityCategory {
+          categories: allSanityCategory(sort: { fields: treatments }) {
             nodes {
               id
               title
@@ -89,7 +90,7 @@ export default function Footer() {
                 <Link to={category.slug.current}>{category.title}</Link>
                 {category.treatments.map((treatment) => (
                   <Link
-                    to={`${category.slug.current}/${treatment.title}`}
+                    to={`/${category.slug.current}/${treatment.slug.current}/`}
                     key={treatment._key}
                   >
                     {treatment.title} →

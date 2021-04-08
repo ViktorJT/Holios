@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Img from 'gatsby-image';
+import { Link } from 'gatsby';
 import PrimaryButton from './PrimaryButton';
 
 const StyledHeader = styled.header`
@@ -24,6 +25,11 @@ const StyledWrapper = styled.div`
   padding: 1rem;
   gap: 1rem;
   flex: 1 1 60%;
+
+  .back {
+    font-size: 1rem;
+    color: var(--darkGreen);
+  }
 
   & > * {
     max-width: var(--textWidth);
@@ -65,14 +71,21 @@ const StyledImg = styled(Img)`
   }
 `;
 
-export default function CategoryHero({ data: { title, subtitle, image } }) {
+export default function CategoryHero({
+  data: { title, subtitle, image },
+  category,
+}) {
   return (
     <StyledHeader>
       <StyledWrapper>
+        <Link className="back" to={`/${category.slug.current}/`}>
+          ← Terug naar {category.slug.current}
+        </Link>
         <div>
           <h1>{title}</h1>
         </div>
         <h2>{subtitle}</h2>
+        <PrimaryButton link="/contact/" label="Maak een aafspraak" />
       </StyledWrapper>
       <StyledImg fluid={image.asset.fluid} alt={image.alt} />
     </StyledHeader>

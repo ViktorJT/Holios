@@ -2,6 +2,7 @@ import React from 'react';
 import PortableText from '@sanity/block-content-to-react';
 import urlBuilder from '@sanity/image-url';
 import styled from 'styled-components';
+import TreatmentList from './TreatmentList';
 
 const UrlFor = (src) =>
   urlBuilder({ projectId: 'hhvgd79v', dataset: 'production' }).image(src);
@@ -20,11 +21,7 @@ const StyledWrapper = styled.div`
   display: flex;
   place-items: center;
   flex-flow: column nowrap;
-
-  background-image: url(3bg.svg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
+  padding-bottom: 2rem;
 
   & > * {
     max-width: 640px;
@@ -36,7 +33,7 @@ const StyledWrapper = styled.div`
   }
 
   @media (min-width: 960px) {
-    padding: 8rem var(--contentPadding) 0 var(--contentPadding);
+    padding: 8rem var(--contentPadding) 4rem var(--contentPadding);
   }
 `;
 
@@ -57,7 +54,7 @@ const StyledPortableText = styled(PortableText)`
   }
 `;
 
-export default function PortableTextBlock({ content }) {
+export default function PortableTextBlock({ content, treatments }) {
   return (
     <StyledWrapper>
       <StyledPortableText
@@ -65,6 +62,7 @@ export default function PortableTextBlock({ content }) {
         blocks={content}
         serializers={serializer}
       />
+      {treatments && <TreatmentList treatments={treatments} />}
     </StyledWrapper>
   );
 }

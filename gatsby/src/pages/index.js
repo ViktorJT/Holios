@@ -68,9 +68,6 @@ export const query = graphql`
       categories {
         title
         subtitle
-        cost
-        duration
-        benefits
         slug {
           current
         }

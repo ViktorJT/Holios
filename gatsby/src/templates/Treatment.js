@@ -4,7 +4,7 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import styled from 'styled-components';
 import SEO from '../components/SEO';
-import CategoryHero from '../components/CategoryHero';
+import TreatmentHero from '../components/TreatmentHero';
 import Solicitation from '../components/Solicitation';
 import PortableTextBlock from '../components/PortableTextBlock';
 
@@ -34,13 +34,13 @@ const StyledWrapper = styled.div`
 export default function SingleTreatmentPage({
   data,
   pageContext,
-  siteSettings,
+  // siteSettings,
 }) {
   const treatment = data.category.treatments.filter(
     (node) => node.slug.current === pageContext.slug
   )[0];
 
-  // Extract the correct data from props by filtering for the treatment in the props.location.pageContext
+  const { category } = data;
 
   return (
     <>
@@ -51,7 +51,7 @@ export default function SingleTreatmentPage({
           image={treatment.image?.asset?.fluid?.src}
         />
         <StyledWrapper>
-          <CategoryHero data={treatment} />
+          <TreatmentHero data={treatment} category={category} />
           <PortableTextBlock content={treatment._rawDescription} />
         </StyledWrapper>
       </StyledContent>

@@ -41,8 +41,10 @@ export default function SingleCategoryPage({
         <SEO title={category.title} image={category.image?.asset?.fluid?.src} />
         <StyledWrapper>
           <CategoryHero data={category} />
-          <PortableTextBlock content={category._rawDescription} />
-          <TreatmentList treatments={category.treatments} />
+          <PortableTextBlock
+            content={category._rawDescription}
+            treatments={category.treatments}
+          />
         </StyledWrapper>
       </StyledContent>
       <Solicitation solicitation={siteSettings.solicitation} />
@@ -56,9 +58,6 @@ export const query = graphql`
       id
       title
       subtitle
-      cost
-      duration
-      benefits
       illustration {
         asset {
           url

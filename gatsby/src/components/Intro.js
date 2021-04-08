@@ -2,7 +2,6 @@
 
 import React from 'react';
 import styled from 'styled-components';
-import PrimaryButton from './PrimaryButton';
 
 const StyledSection = styled.section`
   display: flex;
