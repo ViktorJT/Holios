@@ -36,11 +36,13 @@ export default function SingleTreatmentPage({
   pageContext,
   // siteSettings,
 }) {
+  const { category } = data;
+
   const treatment = data.category.treatments.filter(
     (node) => node.slug.current === pageContext.slug
   )[0];
 
-  const { category } = data;
+  console.log(treatment);
 
   return (
     <>

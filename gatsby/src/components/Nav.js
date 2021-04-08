@@ -152,7 +152,7 @@ export default function Nav() {
       </StyledLogo>
       <StyledWrapper isOpen={isOpen}>
         <StyledLinks isOpen={isOpen}>
-          <Link to="/massage">massage</Link>
+          <Link to="/massagetherapie">massage</Link>
           <Link to="/coaching">coaching</Link>
           <Link to="/cursussen">cursussen</Link>
           <Link to="/about">over mij</Link>
