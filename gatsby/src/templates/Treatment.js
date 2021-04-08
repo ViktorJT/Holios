@@ -59,9 +59,7 @@ export default function SingleTreatmentPage({
 
 export const query = graphql`
   query($slug: String!) {
-    category: sanityCategory(
-      treatments: { elemMatch: { slug: { current: { eq: $slug } } } }
-    ) {
+    category: sanityCategory(slug: { current: { eq: $slug } }) {
       id
       title
       subtitle
