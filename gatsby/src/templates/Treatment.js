@@ -32,17 +32,12 @@ const StyledWrapper = styled.div`
 `;
 
 export default function SingleTreatmentPage({
-  data,
+  data: { category },
   pageContext,
-  // siteSettings,
 }) {
-  const { category } = data;
-
-  const treatment = data.category.treatments.filter(
+  const treatment = category.treatments.filter(
     (node) => node.slug.current === pageContext.slug
   )[0];
-
-  console.log(treatment);
 
   return (
     <>
