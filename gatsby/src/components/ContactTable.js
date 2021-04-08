@@ -29,7 +29,7 @@ export default function PriceTable({ siteSettings }) {
       </thead>
       <tr>
         <td>
-          <a href="mailto:info@holios.nl?&subject=SUBJECT%20SUBJECTSUBJECTSUBJECT&body=IWANTTOMAKEANAPPOINTMENT">
+          <a href="mailto:info@holios.nl?subject=Holios">
             {siteSettings.email}
           </a>
         </td>
