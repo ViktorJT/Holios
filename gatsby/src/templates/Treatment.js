@@ -5,6 +5,7 @@ import { graphql } from 'gatsby';
 import styled from 'styled-components';
 import SEO from '../components/SEO';
 import TreatmentHero from '../components/TreatmentHero';
+import Solicitation from '../components/Solicitation';
 import PortableTextBlock from '../components/PortableTextBlock';
 
 const StyledContent = styled.div`
@@ -30,15 +31,25 @@ const StyledWrapper = styled.div`
   max-width: var(--sectionWidth);
 `;
 
-export default function SingleTreatmentPage({ data, pageContext }) {
-  const { category } = data;
+export default function SingleTreatmentPage(props) {
+  const [
+    bajs,
+    categorySlug,
+    treatmentSlug,
+    korv,
+  ] = props.location.pathname.split('/');
+
+  const category = props.data.categories.nodes.filter(
+    (node) => node.slug.current === categorySlug
+  )[0];
 
   const treatment = category.treatments.filter(
-    (node) => node.slug.current === pageContext.slug
+    (node) => node.slug.current === treatmentSlug
   )[0];
 
   return (
     <>
+      {/* <SEO title={treatment.title} image={treatment.image?.asset?.fluid?.src} /> */}
       <StyledContent>
         <SEO
           title={treatment.title}
@@ -49,32 +60,18 @@ export default function SingleTreatmentPage({ data, pageContext }) {
           <PortableTextBlock content={treatment._rawDescription} />
         </StyledWrapper>
       </StyledContent>
+      {/* <Solicitation solicitation={siteSettings.solicitation} /> */}
     </>
   );
 }
 
 export const query = graphql`
-  query($slug: String!) {
-    category: sanityCategory(
-      treatments: { elemMatch: { slug: { current: { regex: '/$slug/g' } } } }
-    ) {
-      id
-      title
-      subtitle
-      slug {
-        current
-      }
-      image {
-        asset {
-          fluid(maxWidth: 400) {
-            ...GatsbySanityImageFluid
-          }
-        }
-      }
-      treatments {
+  query {
+    categories: allSanityCategory {
+      nodes {
+        id
         title
         subtitle
-        _rawDescription
         slug {
           current
         }
@@ -82,6 +79,21 @@ export const query = graphql`
           asset {
             fluid(maxWidth: 400) {
               ...GatsbySanityImageFluid
+            }
+          }
+        }
+        treatments {
+          title
+          subtitle
+          _rawDescription
+          slug {
+            current
+          }
+          image {
+            asset {
+              fluid(maxWidth: 400) {
+                ...GatsbySanityImageFluid
+              }
             }
           }
         }
