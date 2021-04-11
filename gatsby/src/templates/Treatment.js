@@ -5,7 +5,6 @@ import { graphql } from 'gatsby';
 import styled from 'styled-components';
 import SEO from '../components/SEO';
 import TreatmentHero from '../components/TreatmentHero';
-import Solicitation from '../components/Solicitation';
 import PortableTextBlock from '../components/PortableTextBlock';
 
 const StyledContent = styled.div`
@@ -31,17 +30,15 @@ const StyledWrapper = styled.div`
   max-width: var(--sectionWidth);
 `;
 
-export default function SingleTreatmentPage({
-  data: { category },
-  pageContext,
-}) {
+export default function SingleTreatmentPage({ data, pageContext }) {
+  const { category } = data;
+
   const treatment = category.treatments.filter(
     (node) => node.slug.current === pageContext.slug
   )[0];
 
   return (
     <>
-      {/* <SEO title={treatment.title} image={treatment.image?.asset?.fluid?.src} /> */}
       <StyledContent>
         <SEO
           title={treatment.title}
@@ -52,14 +49,15 @@ export default function SingleTreatmentPage({
           <PortableTextBlock content={treatment._rawDescription} />
         </StyledWrapper>
       </StyledContent>
-      {/* <Solicitation solicitation={siteSettings.solicitation} /> */}
     </>
   );
 }
 
 export const query = graphql`
   query($slug: String!) {
-    category: sanityCategory(slug: { current: { eq: $slug } }) {
+    category: sanityCategory(
+      treatments: { elemMatch: { slug: { current: { eq: $slug } } } }
+    ) {
       id
       title
       subtitle

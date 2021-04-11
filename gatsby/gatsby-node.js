@@ -46,6 +46,8 @@ async function turnTreatmentsIntoPages({ graphql, actions }) {
     }
   `);
 
+  console.log('TESTTTT', data);
+
   data.categories.nodes.forEach((node) => {
     node.treatments.forEach((treatment) => {
       actions.createPage({
