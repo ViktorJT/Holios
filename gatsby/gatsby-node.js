@@ -46,10 +46,10 @@ async function turnTreatmentsIntoPages({ graphql, actions }) {
     }
   `);
 
-  console.log('TESTTTT', data);
-
   data.categories.nodes.forEach((node) => {
+    console.log('testttt', node);
     node.treatments.forEach((treatment) => {
+      console.log('testttt', treatment);
       actions.createPage({
         path: `${node.slug.current}/${treatment.slug.current}`,
         component: treatmentTemplate,
