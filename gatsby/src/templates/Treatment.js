@@ -56,7 +56,7 @@ export default function SingleTreatmentPage({ data, pageContext }) {
 export const query = graphql`
   query($slug: String!) {
     category: sanityCategory(
-      treatments: { elemMatch: { slug: { current: { eq: $slug } } } }
+      treatments: { elemMatch: { slug: { current: { regex: '/$slug/g' } } } }
     ) {
       id
       title
