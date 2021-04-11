@@ -37,10 +37,10 @@ export default function PriceTable({ categories }) {
           <thead>
             <tr>
               <th>
-                <Link to={category.slug.current}>{category.title}</Link>
+                <Link to={`/${category.slug.current}/`}>{category.title}</Link>
               </th>
               <th>
-                <Link className="small" to={category.slug.current}>
+                <Link className="small" to={`/${category.slug.current}/`}>
                   lees meer →
                 </Link>
               </th>
