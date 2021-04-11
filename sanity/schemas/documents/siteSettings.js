@@ -28,6 +28,14 @@ export default {
         Rule.required().max(240).warning('Should be under 240 characters'),
     },
     {
+      title: 'About',
+      name: 'about',
+      type: 'array',
+      of: [{ type: 'block' }, { type: 'altImage' }],
+      description: 'About holios in detail',
+      validation: (Rule) => Rule.required(),
+    },
+    {
       title: 'Solicitation',
       name: 'solicitation',
       type: 'text',
@@ -36,7 +44,7 @@ export default {
         'A short sentence meant to persuade visitors to make an appointment',
       validation: (Rule) =>
         Rule.required()
-          .min(80)
+          .min(64)
           .max(240)
           .warning('Should be between 80 and 240 characters'),
     },

@@ -2,14 +2,6 @@ export default {
   title: 'Category',
   name: 'category',
   type: 'document',
-  fieldsets: [
-    {
-      name: 'price',
-      title: 'Price',
-      description: 'What is the cost of treatments in this category?',
-      options: { columns: 2 },
-    },
-  ],
   fields: [
     {
       title: 'Image',
@@ -51,44 +43,13 @@ export default {
       validation: (Rule) => Rule.required(),
     },
     {
-      title: 'Benefits',
-      name: 'benefits',
-      type: 'array',
-      of: [{ type: 'string', validation: (Rule) => Rule.max(60) }],
-      description: 'The benefits of this category',
-      validation: (Rule) => Rule.required().max(8),
-    },
-    {
-      name: 'cost',
-      title: '€ Cost',
-      type: 'number',
-      fieldset: 'price',
-      validation: (Rule) => Rule.required(),
-    },
-    {
-      name: 'duration',
-      title: 'Duration',
-      type: 'string',
-      options: {
-        list: [
-          { title: 'per 20 minutes', value: 'per 20 minutes' },
-          { title: 'per 30 minutes', value: 'per 30 minutes' },
-          { title: 'per hour', value: 'per hour' },
-          { title: 'per session', value: 'per session' },
-          { title: 'total', value: 'total' },
-        ],
-      },
-      fieldset: 'price',
-      validation: (Rule) => Rule.required(),
-    },
-    {
       name: 'treatments',
       type: 'array',
-      title: 'Treatments',
-      description: 'Which treatments belong to this category?',
+      title: 'Services',
+      description: 'Which services belong to this category?',
       of: [
         {
-          title: 'treatment',
+          title: 'service',
           name: 'treatment',
           type: 'treatment',
         },
