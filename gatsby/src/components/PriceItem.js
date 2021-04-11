@@ -9,7 +9,7 @@ export default function PriceItem({ treatments }) {
             <tr key={i}>
               <td>{treatment.title}</td>
               <td>
-                €{treatment.cost} {treatment.duration}
+                €{treatment.cost} – {treatment.duration}
               </td>
             </tr>
           );
