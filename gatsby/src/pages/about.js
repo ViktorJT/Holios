@@ -15,6 +15,7 @@ const StyledContent = styled.div`
 `;
 
 const StyledWrapper = styled.div`
+  padding-top: 4rem;
   border-left: 1px solid var(--whiteTransparent);
   border-right: 1px solid var(--whiteTransparent);
 

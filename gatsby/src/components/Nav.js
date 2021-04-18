@@ -1,4 +1,10 @@
-import React, { useState, useLayoutEffect, useCallback } from 'react';
+import React, {
+  useState,
+  useLayoutEffect,
+  useEffect,
+  useCallback,
+  useRef,
+} from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
 
@@ -121,8 +127,30 @@ const StyledMenuIcon = styled.button`
 `;
 
 export default function Nav() {
+  const node = useRef();
   const [isScrolled, setIsScrolled] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
+
+  const handleClickOutside = (e) => {
+    if (node.current.contains(e.target)) {
+      console.log('click inside');
+      return;
+    }
+    console.log('click outside');
+    setIsOpen(false);
+  };
+
+  useEffect(() => {
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen]);
 
   const handleScroll = () => {
     const position = window.pageYOffset;
@@ -151,7 +179,7 @@ export default function Nav() {
         holios
       </StyledLogo>
       <StyledWrapper isOpen={isOpen}>
-        <StyledLinks isOpen={isOpen}>
+        <StyledLinks isOpen={isOpen} ref={node}>
           <a href="/massagetherapie">massage</a>
           <a href="/coaching">coaching</a>
           <a href="/cursussen">cursussen</a>
