@@ -152,11 +152,11 @@ export default function Nav() {
       </StyledLogo>
       <StyledWrapper isOpen={isOpen}>
         <StyledLinks isOpen={isOpen}>
-          <Link to="/massagetherapie">massage</Link>
-          <Link to="/coaching">coaching</Link>
-          <Link to="/cursussen">cursussen</Link>
-          <Link to="/about">over mij</Link>
-          <Link to="/contact">prijzen & contact</Link>
+          <a href="/massagetherapie">massage</a>
+          <a href="/coaching">coaching</a>
+          <a href="/cursussen">cursussen</a>
+          <a href="/about">over mij</a>
+          <a href="/contact">prijzen & contact</a>
         </StyledLinks>
       </StyledWrapper>
       <StyledMenuIcon onClick={toggleMenu}>

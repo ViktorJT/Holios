@@ -26,7 +26,6 @@ const StyledWrapper = styled.div`
 `;
 
 export default function contact({ data }) {
-  console.log(data);
   return (
     <StyledContent>
       <StyledWrapper>
