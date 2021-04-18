@@ -131,13 +131,22 @@ export default function Nav() {
   const [isScrolled, setIsScrolled] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
 
+  const toggleMenu = useCallback(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'unset';
+      setIsOpen(false);
+    } else {
+      document.body.style.overflow = 'hidden';
+      setIsOpen(true);
+    }
+  }, [isOpen]);
+
   const handleClickOutside = (e) => {
     if (node.current.contains(e.target)) {
       console.log('click inside');
       return;
     }
-    console.log('click outside');
-    setIsOpen(false);
+    toggleMenu();
   };
 
   useEffect(() => {
@@ -163,15 +172,6 @@ export default function Nav() {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
-
-  const toggleMenu = useCallback(() => {
-    setIsOpen(!isOpen);
-    if (isOpen) {
-      document.body.style.overflow = 'unset';
-    } else {
-      document.body.style.overflow = 'hidden';
-    }
-  }, [isOpen]);
 
   return (
     <StyledNav className={isScrolled ? 'scrolled' : 'not-scrolled'}>
