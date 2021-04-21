@@ -24,7 +24,7 @@ export default function PriceTable({ siteSettings }) {
       <thead>
         <tr>
           <th>Contact</th>
-          <th>Address</th>
+          <th>Adres</th>
         </tr>
       </thead>
       <tr>

@@ -85,7 +85,7 @@ export default function CategoryHero({
           <h1>{title}</h1>
         </div>
         <h2>{subtitle}</h2>
-        <PrimaryButton link="/contact/" label="Maak een aafspraak" />
+        <PrimaryButton link="/contact/" label="Maak een afspraak" />
       </StyledWrapper>
       <StyledImg fluid={image.asset.fluid} alt={image.alt} />
     </StyledHeader>
