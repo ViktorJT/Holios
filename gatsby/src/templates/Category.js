@@ -35,6 +35,7 @@ const StyledWrapper = styled.div`
 export default function SingleCategoryPage({
   data: { category, siteSettings },
 }) {
+  console.log(category._rawDescription);
   return (
     <>
       <StyledContent>
