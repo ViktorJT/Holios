@@ -56,6 +56,12 @@ export default {
       validation: (Rule) => Rule.required(),
     },
     {
+      title: 'Profile image',
+      name: 'profile',
+      type: 'altImage',
+      validation: (Rule) => Rule.required(),
+    },
+    {
       name: 'name',
       title: 'Name',
       type: 'string',

@@ -62,7 +62,7 @@ export default {
         list: [
           { title: 'per behandeling', value: 'per behandeling' },
           { title: '75 minuten', value: '75 minuten' },
-          { title: 'totaal', value: 'total' },
+          { title: 'totaal', value: 'totaal' },
         ],
       },
       fieldset: 'price',
