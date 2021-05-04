@@ -33,7 +33,7 @@ const StyledWrapper = styled.div`
   }
 
   @media (min-width: 960px) {
-    padding: 8rem var(--contentPadding) 4rem var(--contentPadding);
+    padding: 2rem var(--contentPadding) 4rem var(--contentPadding);
   }
 `;
 
