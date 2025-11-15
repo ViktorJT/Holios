@@ -1,6 +1,3 @@
-import createSchema from 'part:@sanity/base/schema-creator';
-import schemaTypes from 'all:part:@sanity/base/schema-type';
-
 // ***********
 // * Documents
 // ***********
@@ -16,13 +13,10 @@ import category from './documents/category';
 import altImage from './objects/altImage';
 import treatment from './objects/treatment';
 
-export default createSchema({
-  name: 'default',
-  types: schemaTypes.concat([
-    siteSettings,
-    homepage,
-    category,
-    altImage,
-    treatment,
-  ]),
-});
+export const schemaTypes = [
+  siteSettings,
+  homepage,
+  category,
+  altImage,
+  treatment,
+];

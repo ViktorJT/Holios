@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import styled from 'styled-components';
-import Img from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import PortableTextBlock from '../components/PortableTextBlock';
 
 const StyledContent = styled.div`
@@ -28,11 +28,12 @@ const StyledWrapper = styled.div`
   max-width: var(--sectionWidth);
 `;
 
-const StyledImg = styled(Img)`
+const StyledImg = styled.div`
   margin-top: 2rem;
   max-width: 240px;
   max-height: 240px;
   border-radius: 100%;
+  overflow: hidden;
 
   @media (min-width: 960px) {
     margin-top: 4rem;
@@ -43,10 +44,9 @@ export default function contact({ data }) {
   return (
     <StyledContent>
       <StyledWrapper>
-        <StyledImg
-          fixed={data.siteSettings.profile.asset.fixed}
-          alt={data.siteSettings.profile.alt}
-        />
+        <StyledImg>
+          <GatsbyImage image={data.siteSettings.profile.asset.gatsbyImageData} alt={data.siteSettings.profile.alt} />
+        </StyledImg>
         <PortableTextBlock content={data.siteSettings._rawAbout} />
       </StyledWrapper>
     </StyledContent>
@@ -60,9 +60,8 @@ export const query = graphql`
       profile {
         alt
         asset {
-          fixed(width: 240, height: 240) {
-            ...GatsbySanityImageFixed
-          }
+          url
+          gatsbyImageData(width: 240, height: 240, layout: FIXED)
         }
       }
     }

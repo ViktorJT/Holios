@@ -39,7 +39,7 @@ export default function SingleCategoryPage({
   return (
     <>
       <StyledContent>
-        <SEO title={category.title} image={category.image?.asset?.fluid?.src} />
+        <SEO title={category.title} image={category.image?.asset?.url} />
         <StyledWrapper>
           <CategoryHero data={category} />
           <PortableTextBlock
@@ -66,23 +66,23 @@ export const query = graphql`
       }
       _rawDescription
       image {
+        alt
         asset {
-          fluid(maxWidth: 1920) {
-            ...GatsbySanityImageFluid
-          }
+          url
+          gatsbyImageData(width: 1920, layout: FULL_WIDTH)
         }
       }
       treatments {
+        _key
         title
         subtitle
         slug {
           current
         }
         image {
+          alt
           asset {
-            fluid(maxWidth: 960) {
-              ...GatsbySanityImageFluid
-            }
+            gatsbyImageData(width: 960, layout: FULL_WIDTH)
           }
         }
       }

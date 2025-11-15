@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Img from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import { Link } from 'gatsby';
 import PrimaryButton from './PrimaryButton';
 
@@ -61,9 +61,23 @@ const StyledWrapper = styled.div`
   }
 `;
 
-const StyledImg = styled(Img)`
+const StyledImg = styled.div`
   margin-bottom: 1rem;
   flex: 1 1 40%;
+  height: 100%;
+  overflow: hidden;
+
+  .gatsby-image-wrapper {
+    height: 100%;
+    width: 100%;
+  }
+
+  .gatsby-image-wrapper img {
+    object-fit: cover;
+    object-position: center;
+    height: 100%;
+    width: 100%;
+  }
 
   @media (min-width: 960px) {
     margin-bottom: 0rem;
@@ -87,7 +101,9 @@ export default function CategoryHero({
         <h2>{subtitle}</h2>
         <PrimaryButton link="/contact/" label="Maak een afspraak" />
       </StyledWrapper>
-      <StyledImg fluid={image.asset.fluid} alt={image.alt} />
+      <StyledImg>
+        <GatsbyImage image={image.asset.gatsbyImageData} alt={image.alt} />
+      </StyledImg>
     </StyledHeader>
   );
 }

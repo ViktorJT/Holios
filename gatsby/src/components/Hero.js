@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Img from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 const StyledHeader = styled.header`
   display: inherit;
@@ -44,9 +44,21 @@ const StyledImage = styled.div`
   overflow: hidden;
   flex: 1 1 50%;
   margin-bottom: 1rem;
+  height: 100%;
 
   & > * {
     height: 100%;
+    width: 100%;
+  }
+
+  .gatsby-image-wrapper {
+    height: 100%;
+    width: 100%;
+  }
+
+  .gatsby-image-wrapper img {
+    object-fit: cover;
+    object-position: center;
   }
 
   .pattern {
@@ -75,7 +87,7 @@ export default function Hero({ siteSettings, image }) {
         <h1>{siteSettings.description}</h1>
       </StyledWrapper>
       <StyledImage>
-        <Img fluid={image.asset.fluid} alt={image.alt} />
+        <GatsbyImage image={image.asset.gatsbyImageData} alt={image.alt} />
         <img className="pattern" src="2bg.svg" alt="" />
       </StyledImage>
     </StyledHeader>

@@ -1,5 +1,5 @@
 import React from 'react';
-import Img from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import styled from 'styled-components';
 import PrimaryButton from './PrimaryButton';
 
@@ -47,12 +47,24 @@ const StyledContent = styled.div`
   }
 `;
 
-const StyledImg = styled(Img)`
+const StyledImg = styled.div`
   flex: 1 1 240px;
-  /* max-height: 40vh; */
+  overflow: hidden;
+  min-height: 240px;
+
+  .gatsby-image-wrapper {
+    height: 100%;
+    width: 100%;
+    min-height: 240px;
+  }
+
+  .gatsby-image-wrapper img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
 
   @media (min-width: 960px) {
-    /* max-height: 1080px; */
     flex: 0 1 240px;
   }
 `;
@@ -60,10 +72,9 @@ const StyledImg = styled(Img)`
 function SingleTreatment({ treatment, index }) {
   return (
     <StyledSection>
-      <StyledImg
-        fluid={treatment.image.asset.fluid}
-        alt={treatment.image.alt}
-      />
+      <StyledImg>
+        <GatsbyImage image={treatment.image.asset.gatsbyImageData} alt={treatment.image.alt} />
+      </StyledImg>
       <StyledContent index={index}>
         <h2>{treatment.title}</h2>
         <p>{treatment.subtitle}</p>
@@ -78,7 +89,7 @@ export default function TreatmentList({ treatments }) {
     <StyledMain>
       {treatments.map((treatment, index) => (
         <SingleTreatment
-          key={treatment.id}
+          key={treatment._key || treatment.slug?.current || index}
           treatment={treatment}
           index={index}
         />

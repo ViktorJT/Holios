@@ -1,5 +1,5 @@
 import React from 'react';
-import PortableText from '@sanity/block-content-to-react';
+import { PortableText } from '@portabletext/react';
 import urlBuilder from '@sanity/image-url';
 import styled from 'styled-components';
 import TreatmentList from './TreatmentList';
@@ -7,10 +7,10 @@ import TreatmentList from './TreatmentList';
 const UrlFor = (src) =>
   urlBuilder({ projectId: 'hhvgd79v', dataset: 'production' }).image(src);
 
-const serializer = {
+const components = {
   types: {
-    altImage: (props) => (
-      <img src={UrlFor(props.node.asset)} alt={props.node.alt} />
+    altImage: ({ value }) => (
+      <img src={UrlFor(value.asset)} alt={value.alt} />
     ),
   },
 };
@@ -37,7 +37,7 @@ const StyledWrapper = styled.div`
   }
 `;
 
-const StyledPortableText = styled(PortableText)`
+const StyledPortableText = styled.div`
   display: inherit;
   flex-flow: column nowrap;
 
@@ -57,11 +57,9 @@ const StyledPortableText = styled(PortableText)`
 export default function PortableTextBlock({ content, treatments }) {
   return (
     <StyledWrapper>
-      <StyledPortableText
-        className="portableText"
-        blocks={content}
-        serializers={serializer}
-      />
+      <StyledPortableText className="portableText">
+        <PortableText value={content} components={components} />
+      </StyledPortableText>
       {treatments && <TreatmentList treatments={treatments} />}
     </StyledWrapper>
   );

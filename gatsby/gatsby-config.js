@@ -9,6 +9,9 @@ export default {
     siteUrl: `https://holios.nl`,
   },
   plugins: [
+    'gatsby-plugin-image',
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-styled-components',
     {
@@ -18,6 +21,7 @@ export default {
         dataset: 'production',
         watchMode: true,
         token: process.env.SANITY_TOKEN,
+        useCdn: false,
       },
     },
   ],

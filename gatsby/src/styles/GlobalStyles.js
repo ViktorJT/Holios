@@ -57,6 +57,10 @@ const GlobalStyles = createGlobalStyle`
     ${'' /* image-rendering: pixelated; */}
   }
 
+  img[data-gatsby-image-wrapper] {
+    image-rendering: -moz-crisp-edges;
+  }
+
   img {
     max-width: 100%;
   }

@@ -53,7 +53,7 @@ export default function SingleTreatmentPage(props) {
       <StyledContent>
         <SEO
           title={treatment.title}
-          image={treatment.image?.asset?.fluid?.src}
+          image={treatment.image?.asset?.url}
         />
         <StyledWrapper>
           <TreatmentHero data={treatment} category={category} />
@@ -76,13 +76,14 @@ export const query = graphql`
           current
         }
         image {
+          alt
           asset {
-            fluid(maxWidth: 400) {
-              ...GatsbySanityImageFluid
-            }
+            url
+            gatsbyImageData(width: 400, layout: FULL_WIDTH)
           }
         }
         treatments {
+          _key
           title
           subtitle
           _rawDescription
@@ -90,10 +91,10 @@ export const query = graphql`
             current
           }
           image {
+            alt
             asset {
-              fluid(maxWidth: 400) {
-                ...GatsbySanityImageFluid
-              }
+              url
+              gatsbyImageData(width: 400, layout: FULL_WIDTH)
             }
           }
         }

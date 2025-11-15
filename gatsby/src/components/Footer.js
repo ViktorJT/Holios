@@ -53,7 +53,7 @@ export default function Footer() {
             postCode
             city
           }
-          categories: allSanityCategory(sort: { fields: treatments }) {
+          categories: allSanityCategory(sort: { title: ASC }) {
             nodes {
               id
               title

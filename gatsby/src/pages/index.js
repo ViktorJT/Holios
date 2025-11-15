@@ -60,9 +60,7 @@ export const query = graphql`
       image {
         alt
         asset {
-          fluid(maxWidth: 1280) {
-            ...GatsbySanityImageFluid
-          }
+          gatsbyImageData(width: 1280, layout: FULL_WIDTH)
         }
       }
       categories {
@@ -75,9 +73,7 @@ export const query = graphql`
           alt
           asset {
             url
-            fluid(maxWidth: 1280) {
-              ...GatsbySanityImageFluid
-            }
+            gatsbyImageData(width: 1280, layout: FULL_WIDTH)
           }
         }
         illustration {

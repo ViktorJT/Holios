@@ -1,5 +1,3 @@
-import { AiOutlineEdit as icon } from 'react-icons/ai';
-
 export default {
   title: 'Service',
   name: 'treatment',
@@ -12,7 +10,6 @@ export default {
       options: { columns: 2 },
     },
   ],
-  icon,
   fields: [
     {
       title: 'Image',

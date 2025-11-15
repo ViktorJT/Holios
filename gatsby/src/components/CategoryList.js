@@ -1,5 +1,5 @@
 import React from 'react';
-import Img from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import styled from 'styled-components';
 import PrimaryButton from './PrimaryButton';
 
@@ -58,9 +58,21 @@ const StyledContent = styled.div`
   }
 `;
 
-const StyledImg = styled(Img)`
+const StyledImg = styled.div`
   height: 320px;
   width: 100%;
+  overflow: hidden;
+
+  .gatsby-image-wrapper {
+    height: 100%;
+    width: 100%;
+  }
+
+  .gatsby-image-wrapper img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
 
   @media (min-width: 960px) {
     flex: 1 1 463px;
@@ -78,11 +90,15 @@ function SingleCategory({ category, index }) {
         <p>{category.subtitle}</p>
         <PrimaryButton link={category.slug.current} label="Lees meer" />
       </StyledContent>
-      <StyledImg fluid={category.image.asset.fluid} alt={category.image.alt} />
+      <StyledImg>
+        <GatsbyImage image={category.image.asset.gatsbyImageData} alt={category.image.alt} />
+      </StyledImg>
     </StyledSection>
   ) : (
     <StyledSection>
-      <StyledImg fluid={category.image.asset.fluid} alt={category.image.alt} />
+      <StyledImg>
+        <GatsbyImage image={category.image.asset.gatsbyImageData} alt={category.image.alt} />
+      </StyledImg>
       <StyledContent index={index}>
         <h2>{category.title}</h2>
         <p>{category.subtitle}</p>
